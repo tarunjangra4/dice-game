@@ -6,8 +6,13 @@ import {
 } from "./betAmountOptionsActionTypes";
 
 export const getBettingAmounts = () => async (dispatch) => {
+  const token = localStorage.getItem("token");
   axios
-    .get("http://localhost:8080/bettingamount")
+    .get("https://api-dice-game.onrender.com/bettingamount", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     .then((res) => {
       return dispatch({
         type: GET_BETTING_AMOUNT_OPTIONS,

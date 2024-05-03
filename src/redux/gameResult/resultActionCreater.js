@@ -5,12 +5,21 @@ import { updateUserPoints } from "../userPoints/userPointsActionCreater";
 export const getGameResult =
   ({ bettingOption, bettingAmount, diceValue }) =>
   async (dispatch) => {
+    const token = localStorage.getItem("token");
     axios
-      .post("http://localhost:8080/result", {
-        bettingOption,
-        bettingAmount,
-        diceValue,
-      })
+      .post(
+        "https://api-dice-game.onrender.com/result",
+        {
+          bettingOption,
+          bettingAmount,
+          diceValue,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((res) => {
         dispatch({
           type: GET_GAME_RESULT_ACTION,

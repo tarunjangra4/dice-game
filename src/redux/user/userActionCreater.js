@@ -6,7 +6,7 @@ export const registerUser =
   async (dispatch) => {
     axios
       .post(
-        "http://localhost:8080/user",
+        "https://api-dice-game.onrender.com/user",
         {},
         {
           headers: {
@@ -26,7 +26,7 @@ export const loginUser = (data) => async (dispatch) => {
   const { email = "", password = "" } = data;
   axios
     .post(
-      "http://localhost:8080/user/login",
+      "https://api-dice-game.onrender.com/user/login",
       {},
       {
         headers: {
